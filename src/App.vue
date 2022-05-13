@@ -1,15 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+
+  <!-- Este es el componente que nos dice cual formato de meseta el cliente posee -->
+  <chooser-vue/>
+
+  <!-- Aqui van los tipos de mesetas -->
+  <!-- <main-vue msg="Tipos de mesetas"/> -->
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ChooserVue from './components/Chooser.vue'
+
+// import MainVue from './components/Main.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // MainVue,
+    ChooserVue
   }
 }
 </script>
