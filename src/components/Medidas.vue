@@ -1,16 +1,26 @@
 <template>
 
 <div>
-    <h1>Elegir Formas de la mesetas</h1>
-     <p>Una o varias, de acuerdo a la necesidad</p>   
-    <div class="row">
+    <h3>Introduzca medidas de la meseta</h3>
+     <p>Para realizar el calculo de la misma</p>   
+
+     <label for="alto">Alto</label>
+     <br>
+     <input type="number"> 
+     <br>
+     <label for="alto">Ancho</label>
+     <br>
+     <input type="number"> 
+
+
+    <!-- <div class="row">
         <img
         v-for=" (tipo_meseta, index) in forma_mesetas" 
         @click="changeFormaMeseta(tipo_meseta, index)" 
         :key="tipo_meseta.id"
         height="200" width="200" 
         :src="tipo_meseta.url">
-    </div>
+    </div> -->
 </div>
   
 </template>
@@ -27,7 +37,7 @@ import { store } from '../store.js'
 
 
 export default {
-    name:'ChooserVue',
+    name:'MedidasVue',
      
 
     data(){
@@ -35,13 +45,8 @@ export default {
         imagen_meseta: {
             id: 1,
             url: require('@/assets/imgs/meseta2.png'),
-        },
-        
+        }
     }
-  },
-  mounted(){
-    store.tamano_de_arreglo_mesetas = this.forma_mesetas.length;
-
   },
   methods:{
     //Que hacer al momento de elegir una meseta
@@ -54,20 +59,15 @@ export default {
         //falta agregar en caso de elegir mas de dos tipos de forma de meseta
         if (index >= 1) {
             this.forma_mesetas = this.forma_mesetas.slice(index,index + 1);    
-            store.changeTipoMeseta(index, this.forma_mesetas.length);
         }
         else{
          this.forma_mesetas = this.forma_mesetas.slice(index,1);
-         store.changeTipoMeseta(index, this.forma_mesetas.length);
         }
         
-        // console.log("forma meseta:",this.forma_mesetas[index].id);
+        console.log(this.forma_mesetas);
+        store.changeTipoMeseta(1);
         
         
-        
-        
-
-          
 
       }
   },
