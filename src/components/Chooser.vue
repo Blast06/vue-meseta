@@ -1,9 +1,10 @@
 <template>
 
 <div>
-    <h1>Elegir Formas de la mesetas</h1>
-     <p>Una o varias, de acuerdo a la necesidad</p>   
+    <h1>Elegir Forma de la meseta</h1>
+     <!-- <p>Una o varias, de acuerdo a la necesidad</p>    -->
     <div class="row">
+        <!-- <p class="obj1">1.</p> -->
         <img
         v-for=" (tipo_meseta, index) in forma_mesetas" 
         @click="changeFormaMeseta(tipo_meseta, index)" 
@@ -75,21 +76,21 @@ export default {
       const forma_mesetas = ref( [
           {
               id: 1,
-              url: require('@/assets/imgs/forma1.png'),
+              url: require('@/assets/svg/forma1.svg'),
               nombre_material: 'Granito negro ubatua',
               precio: 250
 
           },
           {
               id: 2,
-              url: require('@/assets/imgs/forma2.png'),
+              url: require('@/assets/svg/forma2.svg'),
               nombre_material: 'Granito negro ubatua',
               precio: 350
 
           },
           {
               id: 3,
-              url: require('@/assets/imgs/forma3.png'),
+              url: require('@/assets/svg/forma3.svg'),
               nombre_material: 'Granito negro ubatua',
               precio: 250
 
@@ -103,5 +104,10 @@ export default {
 </script>
 
 <style>
+
+.obj1{
+    display: flex;
+    
+}
 
 </style>

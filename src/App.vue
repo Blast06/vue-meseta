@@ -10,7 +10,10 @@
   <!-- <div v-if=" store.tamano_de_arreglo_mesetas  <= store.tipo_meseta "> -->
   <div v-if=" store.tamano_de_arreglo_mesetas > 0 ">
   <medidas-vue/>
+  
   </div>
+
+  <!-- <mesetas-medidas/> -->
 
   <!-- Aqui van los tipos de mesetas -->
   <!-- <main-vue msg="Tipos de mesetas"/> -->
@@ -21,6 +24,8 @@
 
 import ChooserVue from './components/Chooser.vue'
 import MedidasVue from './components/Medidas.vue'
+// import MesetasMedidas from './components/MesetasMedidas.vue';
+
 
 // import MainVue from './components/Main.vue'
 import { store } from './store.js'
@@ -33,7 +38,8 @@ export default {
   components: {
     // MainVue,
     ChooserVue,
-    MedidasVue
+    MedidasVue,
+    // MesetasMedidas
   },
   data() {
     return{

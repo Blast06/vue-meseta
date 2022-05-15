@@ -4,13 +4,106 @@
     <h3>Introduzca medidas de la meseta</h3>
      <p>Para realizar el calculo de la misma</p>   
 
-     <label for="alto">Alto</label>
+
+
+
+<!-- TODO: FALTA PONER LAS MEDIDAS EN CADA LINEA DEL DISENO DE LA MESETA -->
+    <div class="medida0" v-if="store.tipo_meseta == 0">
+    <label for="alto">Alto</label>
      <br>
      <input type="number"> 
      <br>
      <label for="alto">Ancho</label>
      <br>
      <input type="number"> 
+
+     <br>
+     <br>
+     <button>Elegir Material</button>
+    </div>
+     
+
+
+<div class="medida1" v-if="store.tipo_meseta == 1">
+    <label for="alto">M1</label>
+     <br>
+     <input type="number"> 
+     <br>
+
+     <label for="alto">m2</label>
+     <br>
+
+     <input type="number"> 
+     <br>
+
+     <label for="alto">m3</label>
+     <br>
+
+     <input type="number"> 
+     <br>
+
+     <label for="alto">m4</label>
+     <br>
+
+     <input type="number"> 
+     <br>   
+
+     <label for="alto">m5</label>
+     <br>
+
+     <input type="number"> 
+     <br>   
+
+     <label for="alto">m6</label>
+     <br>
+     <input type="number"> 
+
+     <br>
+     <br>
+     <button>Elegir Material</button>
+    </div>
+
+
+
+
+
+<div class="medida1" v-if="store.tipo_meseta == 2">
+    <label for="alto">M1</label>
+     <br>
+     <input type="number"> 
+     <br>
+
+     <label for="alto">m2</label>
+     <br>
+
+     <input type="number"> 
+     <br>
+
+     <label for="alto">m3</label>
+     <br>
+
+     <input type="number"> 
+     <br>
+
+     <label for="alto">m4</label>
+     <br>
+
+     <input type="number"> 
+     <br>   
+
+     <label for="alto">m5</label>
+     <br>
+
+     <input type="number"> 
+     <br>   
+
+     <label for="alto">m6</label>
+     <br>
+     <input type="number"> 
+     <br>
+     <br>
+     <button>Elegir Material</button>
+    </div>
 
 
     <!-- <div class="row">
@@ -45,7 +138,8 @@ export default {
         imagen_meseta: {
             id: 1,
             url: require('@/assets/imgs/meseta2.png'),
-        }
+        },
+        store
     }
   },
   methods:{
