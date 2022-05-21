@@ -2,13 +2,13 @@
 
 <div>
     <h3>Introduzca medidas de la meseta</h3>
-     <p>Para realizar el calculo de la misma</p>   
+    <p>Para realizar el calculo de la misma</p>   
 
 
 
 
 <!-- TODO: FALTA PONER LAS MEDIDAS EN CADA LINEA DEL DISENO DE LA MESETA -->
-    <div class="medida0" v-if="store.tipo_meseta == 0">
+    <div class="medida0" v-if="store.tipo_meseta == 0 && store.escogioMateriales == true">
     <label for="alto">Alto</label>
      <br>
      <input type="number"> 
@@ -19,12 +19,12 @@
 
      <br>
      <br>
-     <button>Elegir Material</button>
+     <button @click="elegirMaterial()">Elegir Material</button>
     </div>
      
 
 
-<div class="medida1" v-if="store.tipo_meseta == 1">
+<div class="medida1" v-if="store.tipo_meseta == 1 && store.escogioMateriales == true">
     <label for="alto">M1</label>
      <br>
      <input type="number"> 
@@ -60,14 +60,14 @@
 
      <br>
      <br>
-     <button>Elegir Material</button>
+     <button @click="elegirMaterial()" >Elegir Material</button>
     </div>
 
 
 
 
 
-<div class="medida1" v-if="store.tipo_meseta == 2">
+<div class="medida1" v-if="store.tipo_meseta == 2 && store.escogioMateriales == true">
     <label for="alto">M1</label>
      <br>
      <input type="number"> 
@@ -102,7 +102,8 @@
      <input type="number"> 
      <br>
      <br>
-     <button>Elegir Material</button>
+     <!-- TODO: Validar los campos -->
+     <button @click="elegirMaterial()" >Elegir Material</button>
     </div>
 
 
@@ -163,7 +164,12 @@ export default {
         
         
 
-      }
+      },
+
+      elegirMaterial(){
+        console.log("Ir a elegir material");
+        
+      },
   },
   setup(){
       const forma_mesetas = ref( [

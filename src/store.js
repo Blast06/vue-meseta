@@ -5,6 +5,7 @@ export const store = reactive({
   count: 0,
   tipo_meseta: 0,
   tamano_de_arreglo_mesetas: 0,
+  escogioMateriales: false,
 
   changeTipoMeseta(tipo, tamano) {
     this.tamano_de_arreglo_mesetas = tamano;
