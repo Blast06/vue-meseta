@@ -26,4 +26,9 @@ export const store = reactive({
     this.material.precio = precio;
     console.log(this.material);
   },
+
+  escogerMateriales() {
+    this.escogioMateriales = true;
+    console.log(this.escogioMateriales);
+  },
 });
