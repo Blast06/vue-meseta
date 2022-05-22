@@ -1,12 +1,4 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <header-vue />
-  <!-- <section-vue /> -->
-
-  <!-- Este es el componente que nos dice cual formato de meseta el cliente posee -->
-  <!-- <chooser-vue /> -->
-
-  <materiales-vue />
   <link
     href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700&display=swap"
     rel="stylesheet"
@@ -16,6 +8,21 @@
     href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
     rel="stylesheet"
   />
+  <header-vue />
+  <!-- <section-vue /> -->
+
+  <!-- Este es el componente que nos dice cual formato de meseta el cliente posee -->
+  <!-- <chooser-vue /> -->
+
+  <!-- muestra la pantalla inicial si no se ha escogido materiales -->
+  <div v-if="store.escogioMateriales == false">
+    <section-vue />
+  </div>
+
+  <!-- si se da click en empezar, muestra la pantalla de los materiales -->
+  <div v-if="store.escogioMateriales == true">
+    <materiales-vue />
+  </div>
 
   <!-- <tabla-vue /> -->
 
@@ -40,29 +47,23 @@
 </template>
 
 <script>
-// import ChooserVue from "./components/Chooser.vue";
 import MedidasVue from "./components/Medidas.vue";
-import MaterialesVue from "./components/Materiales.vue";
-import HeaderVue from "./components/Header.vue";
-// import TablaVue from "./components/Tabla.vue";
-// import SectionVue from "./components/Section.vue";
-// import MesetasMedidas from './components/MesetasMedidas.vue';
 
-// import MainVue from './components/Main.vue'
+import HeaderVue from "./components/Header.vue";
+
+import SectionVue from "./components/Section.vue";
+
 import { store } from "./store.js";
 import { reactive, ref } from "@vue/reactivity";
+import MaterialesVue from "./components/Materiales.vue";
 
 export default {
   name: "App",
   components: {
-    // MainVue,
-    // ChooserVue,
     MedidasVue,
-    MaterialesVue,
     HeaderVue,
-    // TablaVue,
-    // SectionVue,
-    // MesetasMedidas
+    SectionVue,
+    MaterialesVue,
   },
   data() {
     return {
