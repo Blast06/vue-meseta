@@ -8,62 +8,21 @@
     href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
     rel="stylesheet"
   />
+
   <header-vue />
-  <!-- <section-vue /> -->
-
-  <!-- Este es el componente que nos dice cual formato de meseta el cliente posee -->
-  <!-- <chooser-vue /> -->
-
-  <!-- muestra la pantalla inicial si no se ha escogido materiales -->
-  <div v-if="store.escogioMateriales == false">
-    <section-vue />
-  </div>
-
-  <!-- si se da click en empezar, muestra la pantalla de los materiales -->
-  <div v-if="store.escogioMateriales == true">
-    <materiales-vue />
-  </div>
-
-  <!-- <tabla-vue /> -->
-
-  <!-- cuando una posicion sea eliminada del arreglo, muestra las medidas: -->
-  <!-- TODO: crear condicion para ver cuales tipos de mesetas quedan y crear -->
-  <!-- los campos de medidas de acuerdo a el tipo/forma de meseta -->
-  <div
-    v-if="
-      store.escogioMateriales == true && store.tamano_de_arreglo_mesetas > 0
-    "
-  >
-    <medidas-vue />
-  </div>
-
-  <!-- <div v-else>
-    <materiales-vue />
-  </div> -->
-  <!-- <mesetas-medidas/> -->
-
-  <!-- Aqui van los tipos de mesetas -->
-  <!-- <main-vue msg="Tipos de mesetas"/> -->
+  <router-view></router-view>
 </template>
 
 <script>
-import MedidasVue from "./components/Medidas.vue";
-
 import HeaderVue from "./components/Header.vue";
-
-import SectionVue from "./components/Section.vue";
 
 import { store } from "./store.js";
 import { reactive, ref } from "@vue/reactivity";
-import MaterialesVue from "./components/Materiales.vue";
 
 export default {
   name: "App",
   components: {
-    MedidasVue,
     HeaderVue,
-    SectionVue,
-    MaterialesVue,
   },
   data() {
     return {

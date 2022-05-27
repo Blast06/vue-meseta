@@ -1,108 +1,160 @@
 <template>
   <div>
-    <h3>Introduzca medidas de la meseta</h3>
-    <p>Para realizar el calculo de la misma</p>
+    <div class="medida0" v-if="store.tipo_meseta === 0">
+      <h3>Introduzca medidas de la meseta</h3>
+      <p>Para realizar el calculo de la misma</p>
+    </div>
 
     <!-- TODO: FALTA PONER LAS MEDIDAS EN CADA LINEA DEL DISENO DE LA MESETA -->
-    <div
-      class="medida0"
-      v-if="store.tipo_meseta == 0 && store.escogioMateriales == true"
-    >
+    <div class="medida0" v-if="store.tipo_meseta === 0">
       <label for="alto">Alto</label>
       <br />
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+        v-model="alto"
+      />
       <br />
-      <label for="alto">Ancho</label>
+      <label for="Ancho">Ancho</label>
       <br />
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+        v-model="ancho"
+      />
 
       <br />
       <br />
-      <button @click="elegirMaterial()">Elegir Material</button>
+      <button
+        @click="cotizar(0, ancho + alto)"
+        class="text-green-500 hover:text-white py-2 px-4 uppercase rounded bg-white border border-green-500 hover:bg-green-600 shadow-none hover:shadow-lg font-medium transition duration-200"
+      >
+        Cotizar
+      </button>
     </div>
 
-    <div
-      class="medida1"
-      v-if="store.tipo_meseta == 1 && store.escogioMateriales == true"
-    >
+    <div class="medida1" v-if="store.tipo_meseta == 1">
       <label for="alto">M1</label>
       <br />
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
       <br />
 
       <label for="alto">m2</label>
       <br />
 
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
       <br />
 
       <label for="alto">m3</label>
       <br />
 
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
       <br />
 
       <label for="alto">m4</label>
       <br />
 
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
       <br />
 
       <label for="alto">m5</label>
       <br />
 
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
       <br />
 
       <label for="alto">m6</label>
       <br />
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
 
       <br />
       <br />
-      <button @click="elegirMaterial()">Elegir Material</button>
+      <button
+        @click="cotizar(1)"
+        class="text-green-500 hover:text-white py-2 px-4 uppercase rounded bg-white border border-green-500 hover:bg-green-600 shadow-none hover:shadow-lg font-medium transition duration-200"
+      >
+        Cotizar
+      </button>
     </div>
 
-    <div
-      class="medida1"
-      v-if="store.tipo_meseta == 2 && store.escogioMateriales == true"
-    >
+    <div class="medida1" v-if="store.tipo_meseta == 2">
       <label for="alto">M1</label>
       <br />
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
       <br />
 
       <label for="alto">m2</label>
       <br />
 
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
       <br />
 
       <label for="alto">m3</label>
       <br />
 
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
       <br />
 
       <label for="alto">m4</label>
       <br />
 
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
       <br />
 
       <label for="alto">m5</label>
       <br />
 
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
       <br />
 
       <label for="alto">m6</label>
       <br />
-      <input type="number" />
+      <input
+        class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
+        type="number"
+      />
       <br />
       <br />
       <!-- TODO: Validar los campos -->
-      <button @click="elegirMaterial()">Elegir Material</button>
+      <button
+        @click="cotizar(2)"
+        class="text-green-500 hover:text-white py-2 px-4 uppercase rounded bg-white border border-green-500 hover:bg-green-600 shadow-none hover:shadow-lg font-medium transition duration-200"
+      >
+        Cotizar
+      </button>
     </div>
 
     <!-- <div class="row">
@@ -149,11 +201,14 @@ export default {
       }
 
       console.log(this.forma_mesetas);
-      store.changeTipoMeseta(tipoMeseta, 1);
+      // store.changeTipoMeseta(tipoMeseta, 1);
     },
 
-    elegirMaterial() {
-      console.log("Ir a elegir material");
+    cotizar(tipo_meseta, medidasSumadas) {
+      console.log("Tipo de meseta:", tipo_meseta);
+      console.log("campos sumados", medidasSumadas);
+      store.calcularCotizacion(medidasSumadas);
+      this.$router.push({ name: "Tabla", params: store.cotizacion });
     },
   },
   setup() {

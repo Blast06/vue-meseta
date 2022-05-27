@@ -7,8 +7,8 @@
             <img src="@/assets/imgs/logo.png" alt="" />
           </div>
           <div class="enlaces-header">
-            <a href="#">Inicio</a>
-            <a href="#">Contacto</a>
+            <router-link to="/">Inicio</router-link>
+            <!-- <router-link to="/tabla">Contacto</router-link> -->
             <a href="#">Sobre Nosotros</a>
           </div>
         </section>
@@ -18,8 +18,10 @@
   </div>
 </template>
 <script>
+// import SectionVue from "./Section.vue";
 export default {
+  components: {},
   name: "HeaderVue",
 };
 </script>
-<style lang="spanish"></style>
+<style></style>

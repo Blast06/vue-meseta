@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-24">
     <h1 class="font-bold mt-5">Escoger Material</h1>
 
     <div class="grid grid-cols-5">
@@ -10,7 +10,7 @@
           height="150"
           width="150"
         />
-        <p class="justify-center">{{ item.nombre_material }}</p>
+        <p>{{ item.nombre_material }}</p>
       </div>
     </div>
   </div>
@@ -118,6 +118,7 @@ export default {
     escogerMaterial(item) {
       console.log("Elegiste el material:", item);
       store.crearTipoDeMaterial(item.precio, item.nombre_material);
+      this.$router.push("/chooser");
     },
   },
 };

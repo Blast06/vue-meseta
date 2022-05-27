@@ -1,6 +1,6 @@
 <template>
-  <div class="">
-    <h1 class="mt-10 font-bold">Elegir Forma de la meseta</h1>
+  <div class="mt-20">
+    <h1 class="mt-10 font-bold text-xl">Elegir Forma de la meseta</h1>
     <!-- <p>Una o varias, de acuerdo a la necesidad</p>    -->
     <div class="flex flex-row justify-center">
       <img
@@ -12,6 +12,8 @@
         :src="tipo_meseta.url"
       />
     </div>
+
+    <medidas-vue />
   </div>
 </template>
 
@@ -20,8 +22,9 @@ import { ref } from "@vue/reactivity";
 
 //almacena variables y metodos globales
 import { store } from "../store.js";
-
+import MedidasVue from "./Medidas.vue";
 export default {
+  components: { MedidasVue },
   name: "ChooserVue",
 
   data() {
