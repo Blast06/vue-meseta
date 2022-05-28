@@ -34,61 +34,67 @@
     </div>
 
     <div class="medida1" v-if="store.tipo_meseta == 1">
-      <label for="alto">M1</label>
+      <label for="m1">M1</label>
       <br />
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m1_meseta2"
       />
       <br />
 
-      <label for="alto">m2</label>
+      <label for="m2">m2</label>
       <br />
 
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m2_meseta2"
       />
       <br />
 
-      <label for="alto">m3</label>
+      <label for="m3">m3</label>
       <br />
 
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m3_meseta2"
       />
       <br />
 
-      <label for="alto">m4</label>
+      <label for="m4">m4</label>
       <br />
 
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m4_meseta2"
       />
       <br />
 
-      <label for="alto">m5</label>
+      <label for="m5">m5</label>
       <br />
 
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m5_meseta2"
       />
       <br />
 
-      <label for="alto">m6</label>
+      <label for="m6">m6</label>
       <br />
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m6_meseta2"
       />
 
       <br />
       <br />
       <button
-        @click="cotizar(1)"
+        @click="cotizar(1, m6_meseta2 + m5_meseta2 + m4_meseta2 + m3_meseta2 + m2_meseta2 + m1_meseta2)"
         class="text-green-500 hover:text-white py-2 px-4 uppercase rounded bg-white border border-green-500 hover:bg-green-600 shadow-none hover:shadow-lg font-medium transition duration-200"
       >
         Cotizar
@@ -96,61 +102,72 @@
     </div>
 
     <div class="medida1" v-if="store.tipo_meseta == 2">
-      <label for="alto">M1</label>
+      <label for="m1">M1</label>
       <br />
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m1_meseta3"
       />
       <br />
 
-      <label for="alto">m2</label>
+      <label for="m2">m2</label>
       <br />
 
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m2_meseta3"
+
       />
       <br />
 
-      <label for="alto">m3</label>
+      <label for="m3">m3</label>
       <br />
 
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m3_meseta3"
+
       />
       <br />
 
-      <label for="alto">m4</label>
+      <label for="m4">m4</label>
       <br />
 
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m4_meseta3"
+
       />
       <br />
 
-      <label for="alto">m5</label>
+      <label for="m5">m5</label>
       <br />
 
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m5_meseta3"
+
       />
       <br />
 
-      <label for="alto">m6</label>
+      <label for="m6">m6</label>
       <br />
       <input
         class="placeholder:italic placeholder:text-slate-400 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
         type="number"
+        v-model="m6_meseta3"
+
       />
       <br />
       <br />
       <!-- TODO: Validar los campos -->
       <button
-        @click="cotizar(2)"
+        @click="cotizar(2, m6_meseta3 + m5_meseta3 + m4_meseta3 + m3_meseta3 + m2_meseta3 + m1_meseta3)"
         class="text-green-500 hover:text-white py-2 px-4 uppercase rounded bg-white border border-green-500 hover:bg-green-600 shadow-none hover:shadow-lg font-medium transition duration-200"
       >
         Cotizar

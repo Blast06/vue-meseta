@@ -13,6 +13,7 @@ export const store = reactive({
     CostoTotal: 0,
     Combustible: 0,
     totalMedidas: 0,
+    itbis: 0.18,
   },
 
   material: {
@@ -61,7 +62,8 @@ export const store = reactive({
     if (this.tipo_meseta === 0) {
       this.combustible = 700;
       this.costoTotal =
-        medidasSumadas * this.material.precio + this.combustible;
+       (this.material.precio * 0.18) + this.combustible + (medidasSumadas * this.material.precio );
+
       console.log("Costo Total meseta 1:", this.costoTotal);
       this.cotizacion = {
         precioMaterial: this.material.precio,
@@ -70,14 +72,33 @@ export const store = reactive({
         Combustible: this.combustible,
         totalMedidas: medidasSumadas,
       };
-      console.table(this.cotizacion);
+      // console.table(this.cotizacion);
     } else if (this.tipo_meseta === 1) {
+      this.combustible = 700;
       this.costoTotal =
-        medidasSumadas * 0.3 * this.material.precio + this.combustible;
-      console.log("Costo Total meseta 2:", this.costoTotal);
+       (this.material.precio * 0.18) + 3500 + this.combustible + (medidasSumadas * this.material.precio );
+      
+        this.cotizacion = {
+          precioMaterial: this.material.precio,
+          NombreMaterial: this.material.nombre,
+          CostoTotal: this.costoTotal,
+          Combustible: this.combustible,
+          totalMedidas: medidasSumadas,
+      };
+      
     } else if (this.tipo_meseta === 2) {
+      this.combustible = 700;
       this.costoTotal =
-        medidasSumadas * 0.45 * this.material.precio + this.combustible;
+       (this.material.precio * 0.18) + 3500 + this.combustible + (medidasSumadas * this.material.precio );
+      
+        this.cotizacion = {
+          precioMaterial: this.material.precio,
+          NombreMaterial: this.material.nombre,
+          CostoTotal: this.costoTotal,
+          Combustible: this.combustible,
+          totalMedidas: medidasSumadas,
+      };
+
       console.log("Costo Total meseta 3:", this.costoTotal);
     }
   },
