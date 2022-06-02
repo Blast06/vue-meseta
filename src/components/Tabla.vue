@@ -68,10 +68,8 @@
               }}
             </td>
             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-              RD$
-              {{
-                this.cotizacion.Combustible
-              }}
+               {{ this.cotizacion.Combustible }}
+             
             </td>
           </tr>
           <tr class="bg-lime-500">
@@ -91,7 +89,7 @@
              
             </td>
             <td class="p-3 text-sm font-weight-bold text-gray-700 whitespace-nowrap">
-            {{costCurrency}}    
+            {{ montoTotal }}
             </td>
           </tr>
         </tbody>
@@ -113,6 +111,10 @@ import { useRoute } from "vue-router";
 const formatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'})
 import { jsPDF } from "jspdf";
 import autoTable from 'jspdf-autotable';
+// import VueNumeric from 'vue-numeric'
+
+
+ 
 
 
 
@@ -122,36 +124,47 @@ import autoTable from 'jspdf-autotable';
 export default {
   name: "TablaVue",
   components: {
+    // VueNumeric
     
     },
   data() {
     return {
       cotizacion: {},
       total: 0,
+      montoTotal:0,
       heading: "Cotizacion Meseta",
       items: [
         
-      ]
+      ],
+      Combustible:0
      
     };
   },
 
 
   mounted() {
+    // fx.base = "USD";
     const route = useRoute();
     this.cotizacion = route.params;
     console.warn("Desde la ruta", this.cotizacion);
+    this.Combustible = this.cotizacion.Combustible;
+    
+    let currencyFormat = Intl.NumberFormat('en-US');
+
+    this.montoTotal = parseInt(this.cotizacion.CostoTotal) + parseInt(this.cotizacion.Combustible);
+    this.montoTotal = `RD$ ${currencyFormat.format(this.montoTotal)}` ;
+
     this.items = [
       "10001",this.cotizacion.NombreMaterial, 
-       this.cotizacion.totalMedidas, 
-       this.cotizacion.precioMaterial, 
-       this.cotizacion.CostoTotal
+       this.cotizacion.totalMedidas,
+       `RD$ ${currencyFormat.format(this.cotizacion.precioMaterial)}`,
+       this.montoTotal
     ]
   },
 
   computed: {
         costCurrency() {
-            return formatter.format(this.cotizacion.total)
+            return formatter.format(this.cotizacion.Combustible)
         }
     },
 
@@ -182,11 +195,16 @@ export default {
         //TODO: AGREGAR UNA TERCERA FILA QUE MUESTRE EL TOTAL
         //CAMBIAR EL COLOR AL VERDE QUE TIENE LA TABLA EN VUE
 
+       
+        // this.montoTotal = parseInt(this.cotizacion.CostoTotal) + parseInt(this.cotizacion.Combustible);
+        console.warn(this.montoTotal);
+
         autoTable(doc, {
           head: [['No', 'Detalles', 'Medidas', 'Precio', 'Total']],
           body: [
                   ["1001", this.cotizacion.NombreMaterial, `${this.cotizacion.totalMedidas}mts`, `RD$ ${this.cotizacion.precioMaterial}`, ` RD$${this.cotizacion.CostoTotal}`  ],
                   ["1002", 'Transporte - Combustible', '-',`RD$${this.cotizacion.Combustible}`, `RD$${this.cotizacion.Combustible}`  ],
+                  ["TOTAL", '', '-','', this.montoTotal  ],
                   
                   // ...
                 ],

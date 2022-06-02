@@ -21,7 +21,7 @@ export const store = reactive({
     precio: 0,
     nombre: "nada",
   },
-  
+
 
   changeTipoMeseta(tipo, tamano) {
     this.tamano_de_arreglo_mesetas = tamano;
