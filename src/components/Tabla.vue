@@ -48,7 +48,7 @@
           <tr class="bg-gray-50">
             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
               <a href="#" class="font-bold text-blue-500 hover:underline"
-                >10002</a
+                >1002</a
               >
             </td>
             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
@@ -58,17 +58,14 @@
               <span
                 class="p-1.5 text-xs font-medium uppercase tracking-wider  rounded-lg bg-opacity-50"
               >
-                -
+             -
               </span>
             </td>
             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-              RD$
-              {{
-                this.cotizacion.Combustible
-              }}
+             {{ this.Combustible }}
             </td>
             <td class="p-3 text-sm text-gray-700 whitespace-nowrap">
-               {{ this.cotizacion.Combustible }}
+               {{ this.Combustible }}
              
             </td>
           </tr>
@@ -136,6 +133,7 @@ export default {
       items: [
         
       ],
+      items2:[],
       Combustible:0
      
     };
@@ -144,22 +142,26 @@ export default {
 
   mounted() {
     // fx.base = "USD";
+    let currencyFormat = Intl.NumberFormat('en-US');
     const route = useRoute();
     this.cotizacion = route.params;
     console.warn("Desde la ruta", this.cotizacion);
-    this.Combustible = this.cotizacion.Combustible;
+    this.Combustible =  `RD$ ${currencyFormat.format(this.cotizacion.Combustible)}`;
     
-    let currencyFormat = Intl.NumberFormat('en-US');
+   
 
     this.montoTotal = parseInt(this.cotizacion.CostoTotal) + parseInt(this.cotizacion.Combustible);
     this.montoTotal = `RD$ ${currencyFormat.format(this.montoTotal)}` ;
+    this.cotizacion.CostoTotal = `${currencyFormat.format(this.cotizacion.CostoTotal)}` ;
+ 
 
-    this.items = [
-      "10001",this.cotizacion.NombreMaterial, 
-       this.cotizacion.totalMedidas,
-       `RD$ ${currencyFormat.format(this.cotizacion.precioMaterial)}`,
-       this.montoTotal
-    ]
+    // this.items = [
+    //   "10001",this.cotizacion.NombreMaterial, 
+    //    this.cotizacion.totalMedidas,
+    //    `RD$ ${currencyFormat.format(this.cotizacion.precioMaterial)}`,
+    //    this.montoTotal
+    // ]
+    
   },
 
   computed: {
@@ -202,7 +204,7 @@ export default {
         autoTable(doc, {
           head: [['No', 'Detalles', 'Medidas', 'Precio', 'Total']],
           body: [
-                  ["1001", this.cotizacion.NombreMaterial, `${this.cotizacion.totalMedidas}mts`, `RD$ ${this.cotizacion.precioMaterial}`, ` RD$${this.cotizacion.CostoTotal}`  ],
+                  ["1001", this.cotizacion.NombreMaterial, `${this.cotizacion.totalMedidas}mts`, `RD$ ${this.cotizacion.precioMaterial}`,  this.cotizacion.CostoTotal,  ],
                   ["1002", 'Transporte - Combustible', '-',`RD$${this.cotizacion.Combustible}`, `RD$${this.cotizacion.Combustible}`  ],
                   ["TOTAL", '', '-','', this.montoTotal  ],
                   
